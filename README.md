@@ -15,6 +15,7 @@ This command incluse sintaxis tests, format, dependencies and others. It is need
 
 Example:
 
+ansible-test sanity -v --python 3.8 --requirements
+
+If it need exclude output tests information include this:
 ansible-test sanity -v --python 3.8 --requirements --exclude tests/output/
-
-
