@@ -19,3 +19,37 @@ ansible-test sanity -v --python 3.8 --requirements
 
 If it need exclude output tests information include this:
 ansible-test sanity -v --python 3.8 --requirements --exclude tests/output/
+
+
+ansible-test units
+
+This command include unit python testing for plugins. In this repo include examples and config for this testings in ansible_collections/namespace_example/collection_example/tests/unit.
+
+
+Example
+
+ansible-test units --python 3.8 --requirements --coverage
+
+If it need html inform coverage
+
+ansible-test coverage html --python 3.8 --requirements
+
+
+
+ansible-test integration
+
+This command include integration testing in a roles for plugins. In this repo include examples and config for this testings in ansible_collections/namespace_example/collection_example/tests/intetgration.
+
+Example
+
+sudo ansible-test integration --python 3.8 --requirements
+
+Not included coverage information
+
+
+
+antsibull-changelog release --version 
+
+This command agregate info change log
+
+
