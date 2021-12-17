@@ -1,0 +1,8 @@
+{
+  "ANSIBLE_MODULE_ARGS": {
+    "dsn": "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=conordbt09.test.es)(PORT=1554))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=ADOADO1T_TST_SRV)))",
+    "user": "PATOWER1",
+    "password": "mypassword",
+    "organisations": [1, 3, 31]
+  }
+}

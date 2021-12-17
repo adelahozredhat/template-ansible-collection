@@ -1,0 +1,6 @@
+{
+    "ANSIBLE_MODULE_ARGS": {
+        "list_from_g2r": ["{'ID': 'user1', 'TEAM': 'group1', 'EMAIL': 'user1@test'}"],
+        "list_users_and_groups_from_tower": "{'user1': ['group1', 'group3']}"
+    }
+}

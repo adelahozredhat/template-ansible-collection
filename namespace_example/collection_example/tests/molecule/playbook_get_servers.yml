@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  gather_facts: no
+  collections:
+    - namespace_example.collection_example
+  tasks:
+    - name: 'Testing module get_servers'
+      namespace_example.collection_example.get_servers:
+        techgroups:
+          - C-TTS-TS-INFRA-CLOUD-CIT
+          - I-SSO-ES-TS-BBDD-FILIALS
+        username: ATOWER1
+        password: mypassword
+        url: 'https://herramientasaut.test.es/haiinv'
+        proxy: 'proxyserv.svb.test.es:8080'
+      register: result
+    - name: debug
+      debug:
+        var: result

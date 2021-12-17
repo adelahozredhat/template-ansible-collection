@@ -1,0 +1,17 @@
+---
+include:
+  # - remote: https://auto-nitory-nitory.pro.icp-2.intranet.cloud.test.es/repository/templates_cicd/collection-python/.gitlab-ci-template-0.0.1.yml
+  - project: 9387HE/ci_cd/gitlab-templates
+    ref: master
+    file: /collections-ansible-python/.gitlab-ci-template.yml
+
+
+# start:
+#   stage: start
+#   script:
+#     - 'echo start gitlab-ci'
+
+# finish:
+#   stage: finish
+#   script:
+#     - 'echo finish gitlab-ci'

@@ -1,2 +1,3 @@
-# template-ansible-collection
-Template for ansible collection
+# Ansible Collection - space.template_ansible_collection
+
+Documentation for the collection.

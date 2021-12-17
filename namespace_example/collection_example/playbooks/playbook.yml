@@ -1,0 +1,6 @@
+---
+- name: "Playing with Ansible and Git"
+  hosts: localhost
+  connection: local 
+  roles:
+    - namespace_example.collection_example.get_server_example_role
