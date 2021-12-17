@@ -1,1 +1,0 @@
-/usr/lib/python3/dist-packages/ansible_test/_data/sanity/import/yaml_to_json.py
