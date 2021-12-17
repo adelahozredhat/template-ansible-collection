@@ -469,26 +469,30 @@ def test_get_servers():
             Haiinv, '_Haiinv__request', get_inventory_with_data_response_mock):
         response = haiinv.get_servers('lab_test_rh_1', 'I-SSO-ES-TS-TSBASE-FACTORY')
 
-    assert response == {'arqopasr16.test.es': {'system_code': 'ARQOP', 'system_description': 'ARQUITECTURA OPERACIO',
-                                                  'host_environment': 'pre', 'environment_description': 'Preproduccio',
-                                                  'center': 'c2', 'security_zone': 'mz', 'business_group': 'TTS',
-                                                  'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
-                                                  'ansible_user': 'Patower1@arqopasr16.test.es', 'ansible_host':
-                                                      'sgsinasp-b1.svb.test.es'},
-                        'arqopasr19.test.es': {'system_code': 'ARQOP', 'system_description': 'ARQUITECTURA OPERACIO',
-                                                  'host_environment': 'pre', 'environment_description': 'Preproduccio',
-                                                  'center': 'c1', 'security_zone': 'mz', 'business_group': 'TTS',
-                                                  'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
-                                                  'ansible_user': 'Patower1@arqopasr19.test.es', 'ansible_host':
-                                                      'sgsinasp-b1.svb.test.es'},
-                        'arqopasr21.test.es': {'system_code': 'PAQFA',
-                                                  'system_description': 'SERVIDORES PAQUETIZACION FACTORY',
-                                                  'host_environment': 'dsv',
-                                                  'environment_description': 'Desenvolupament / Test', 'center': 'c1',
-                                                  'security_zone': 'mz', 'business_group': 'TTS',
-                                                  'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
-                                                  'ansible_user': 'Patower1@arqopasr21.test.es',
-                                                  'ansible_host': 'sgsinasp-b1.svb.test.es'}}
+    assert response == {
+        'arqopasr16.test.es': {
+            'system_code': 'ARQOP', 'system_description': 'ARQUITECTURA OPERACIO',
+            'host_environment': 'pre', 'environment_description': 'Preproduccio',
+            'center': 'c2', 'security_zone': 'mz', 'business_group': 'TTS',
+            'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
+            'ansible_user': 'Patower1@arqopasr16.test.es', 'ansible_host':
+            'sgsinasp-b1.svb.test.es'},
+        'arqopasr19.test.es': {
+            'system_code': 'ARQOP', 'system_description': 'ARQUITECTURA OPERACIO',
+            'host_environment': 'pre', 'environment_description': 'Preproduccio',
+            'center': 'c1', 'security_zone': 'mz', 'business_group': 'TTS',
+            'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
+            'ansible_user': 'Patower1@arqopasr19.test.es', 'ansible_host':
+            'sgsinasp-b1.svb.test.es'},
+        'arqopasr21.test.es': {
+            'system_code': 'PAQFA',
+            'system_description': 'SERVIDORES PAQUETIZACION FACTORY',
+            'host_environment': 'dsv',
+            'environment_description': 'Desenvolupament / Test', 'center': 'c1',
+            'security_zone': 'mz', 'business_group': 'TTS',
+            'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
+            'ansible_user': 'Patower1@arqopasr21.test.es',
+            'ansible_host': 'sgsinasp-b1.svb.test.es'}}
 
 
 def test_get_servers_empty():
@@ -709,26 +713,30 @@ def test__safe_get():
     )
     response = haiinv._Haiinv__safe_get(get_inventory(), 'all', '_meta', 'hostvars')
 
-    assert response == {'arqopasr16.test.es': {'system_code': 'ARQOP', 'system_description': 'ARQUITECTURA OPERACIO',
-                                                  'host_environment': 'pre', 'environment_description': 'Preproduccio',
-                                                  'center': 'c2', 'security_zone': 'mz', 'business_group': 'TTS',
-                                                  'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
-                                                  'ansible_user': 'Patower1@arqopasr16.test.es', 'ansible_host':
-                                                      'sgsinasp-b1.svb.test.es'},
-                        'arqopasr19.test.es': {'system_code': 'ARQOP', 'system_description': 'ARQUITECTURA OPERACIO',
-                                                  'host_environment': 'pre', 'environment_description': 'Preproduccio',
-                                                  'center': 'c1', 'security_zone': 'mz', 'business_group': 'TTS',
-                                                  'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
-                                                  'ansible_user': 'Patower1@arqopasr19.test.es', 'ansible_host':
-                                                      'sgsinasp-b1.svb.test.es'},
-                        'arqopasr21.test.es': {'system_code': 'PAQFA',
-                                                  'system_description': 'SERVIDORES PAQUETIZACION FACTORY',
-                                                  'host_environment': 'dsv',
-                                                  'environment_description': 'Desenvolupament / Test', 'center': 'c1',
-                                                  'security_zone': 'mz', 'business_group': 'TTS',
-                                                  'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
-                                                  'ansible_user': 'Patower1@arqopasr21.test.es',
-                                                  'ansible_host': 'sgsinasp-b1.svb.test.es'}}
+    assert response == {
+        'arqopasr16.test.es': {
+            'system_code': 'ARQOP', 'system_description': 'ARQUITECTURA OPERACIO',
+            'host_environment': 'pre', 'environment_description': 'Preproduccio',
+            'center': 'c2', 'security_zone': 'mz', 'business_group': 'TTS',
+            'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
+            'ansible_user': 'Patower1@arqopasr16.test.es', 'ansible_host':
+            'sgsinasp-b1.svb.test.es'},
+        'arqopasr19.test.es': {
+            'system_code': 'ARQOP', 'system_description': 'ARQUITECTURA OPERACIO',
+            'host_environment': 'pre', 'environment_description': 'Preproduccio',
+            'center': 'c1', 'security_zone': 'mz', 'business_group': 'TTS',
+            'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
+            'ansible_user': 'Patower1@arqopasr19.test.es', 'ansible_host':
+            'sgsinasp-b1.svb.test.es'},
+        'arqopasr21.test.es': {
+            'system_code': 'PAQFA',
+            'system_description': 'SERVIDORES PAQUETIZACION FACTORY',
+            'host_environment': 'dsv',
+            'environment_description': 'Desenvolupament / Test', 'center': 'c1',
+            'security_zone': 'mz', 'business_group': 'TTS',
+            'ansible_connection': 'ssh', 'step': 1, 'affiliate': 'TESTS',
+            'ansible_user': 'Patower1@arqopasr21.test.es',
+            'ansible_host': 'sgsinasp-b1.svb.test.es'}}
 
 
 def test__safe_get2():
