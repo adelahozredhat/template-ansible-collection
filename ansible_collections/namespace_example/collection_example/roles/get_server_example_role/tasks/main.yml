@@ -1,6 +1,6 @@
 ---
-- name: "Example get information"
-  namespace_example.collection_example.get_servers:
+- name: Example get information
+  get_servers:
     username: "{{ example_username }}"
     password: "{{ example_password }}"
     url: "{{ example_url }}"
@@ -9,11 +9,14 @@
     environment: "{{ example_environment }}"
   notify: HandlerRun
   register: info_servers
-  
 
-- name: "Debug info"
+- name: Debug info
   debug:
     msg: "{{ info_servers }}"
 
-- copy: content="copy" dest=prueba.txt
+- name: Copy file
+  copy:
+    content: "copy"
+    dest: prueba.txt
+    mode: '0644'
   notify: HandlerRun

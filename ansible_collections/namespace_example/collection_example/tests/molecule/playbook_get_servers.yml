@@ -1,11 +1,11 @@
 ---
 - hosts: localhost
-  gather_facts: no
+  gather_facts: false
   collections:
     - namespace_example.collection_example
   tasks:
     - name: 'Testing module get_servers'
-      namespace_example.collection_example.get_servers:
+      get_servers:
         techgroups:
           - C-TTS-TS-INFRA-CLOUD-CIT
           - I-SSO-ES-TS-BBDD-FILIALS

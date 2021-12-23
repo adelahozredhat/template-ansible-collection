@@ -11,4 +11,4 @@
 
 - name: "Debug info"
   debug:
-    msg: "{{info_servers}}"
+    msg: "{{ info_servers }}"

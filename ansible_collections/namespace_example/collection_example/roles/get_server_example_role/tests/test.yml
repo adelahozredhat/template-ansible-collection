@@ -1,7 +1,7 @@
 ---
 - name: "Playing with Ansible and Git"
   hosts: localhost
-  connection: local 
+  connection: local
 
   tasks:
     - include_role:

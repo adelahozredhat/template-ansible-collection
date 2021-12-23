@@ -1,3 +1,4 @@
+---
 - name: HandlerRun
   debug:
     msg: "Run handler"
