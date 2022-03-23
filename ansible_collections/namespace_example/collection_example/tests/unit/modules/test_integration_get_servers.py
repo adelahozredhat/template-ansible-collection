@@ -14,7 +14,7 @@ def test_module_args_validation_enviroment(module_mock):
     set_module_args({
         'username': os.environ.get('HAIINV_USER_TEST'),
         'password': os.environ.get('HAIINV_PASSWORD_TEST'),
-        'url': 'https://adelahozredhat.github.io/template-ansible-collection/prueba.json',
+        'url': 'https://adelahozredhat.github.io/json_rest_examples/prueba.json',
         'techgroups': 'lab_test_rh_1',
         'environment': 'previous'
     })
@@ -28,7 +28,7 @@ def test_module_args_validation_enviroment_error(module_mock):
     set_module_args({
         'username': os.environ.get('HAIINV_USER_TEST'),
         'password': os.environ.get('HAIINV_PASSWORD_TEST'),
-        'url': 'https://adelahozredhat.github.io/template-ansible-collection/prueba.json'
+        'url': 'https://adelahozredhat.github.io/json_rest_examples/prueba.json'
     })
     with pytest.raises(AnsibleFailJson) as result:
         my_module.main()
