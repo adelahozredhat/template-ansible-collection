@@ -1,0 +1,114 @@
+---
+apiVersion: 1.0.0
+metadata:
+  generateName: ansible-collection-
+projects:
+-
+    name: ansible-collection-template
+    source:
+        location: "https://github.com/adelahozredhat/template_ansible_collection"
+        branch: develop
+        type: git
+components:
+-
+  type: chePlugin
+  id: redhat/ansible/latest
+-
+  type: chePlugin
+  id: redhat/vscode-yaml/latest
+-
+  type: chePlugin
+  id: ms-python/python/latest
+  preferences:
+    python.globalModuleInstallation: true
+-
+  type: dockerimage
+  alias: ansible-test
+  image: image-registry.openshift-image-registry.svc:5000/openshift-workspaces/ansible-test-image
+  memoryLimit: 2Gi
+  mountSources: true
+# -
+#   type: dockerimage
+#   alias: ansible-navigator
+#   image: image-registry.openshift-image-registry.svc:5000/openshift-workspaces/ansible-navigator-image
+#   memoryLimit: 4Gi
+#   mountSources: true
+# -
+#   type: dockerimage
+#   alias: ansible-runner
+#   image: image-registry.openshift-image-registry.svc:5000/openshift-workspaces/ansible-runner-image
+#   memoryLimit: 2Gi
+#   mountSources: true
+-
+  type: dockerimage
+  alias: ansible-playbook
+  image: image-registry.openshift-image-registry.svc:5000/openshift-workspaces/ansible-playbook-image
+  memoryLimit: 2Gi
+  mountSources: true
+
+commands:
+
+-
+  name: 1. Execute install module
+  actions:
+    - type: exec
+      component: ansible-test
+      command: "pip install -e ."
+      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+
+-
+  name: 1. Execute build galaxy
+  actions:
+    - type: exec
+      component: ansible-test
+      command: "ansible-galaxy collection build --force"
+      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+
+-
+  name: 2. Execute sanity
+  actions:
+    - type: exec
+      component: ansible-test
+      command: "ansible-test sanity"
+      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+
+-
+  name: 3. Execute units
+  actions:
+    - type: exec
+      component: ansible-test
+      command: "ansible-test units"
+      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+
+-
+  name: 4. Execute integration
+  actions:
+    - type: exec
+      component: ansible-test
+      command: "ansible-test integration"
+      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+
+-
+  name: 5. Execute coverage
+  actions:
+    - type: exec
+      component: ansible-test
+      command: "ansible-test coverage"
+      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+
+
+# -
+#   name: 6. Execute coverage
+#   actions:
+#     - type: exec
+#       component: ansible-navigator
+#       command: "ansible-navigator --cdcp collection_doc_cache.db"
+#       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+
+-
+  name: 6. Execute coverage
+  actions:
+    - type: exec
+      component: ansible-playbook
+      command: "ansible-playbook --cdcp collection_doc_cache.db"
+      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
