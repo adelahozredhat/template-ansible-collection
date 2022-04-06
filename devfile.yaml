@@ -1,7 +1,7 @@
 ---
 apiVersion: 1.0.0
 metadata:
-  generateName: ansible-collection
+  generateName: ansible-collection-
 projects:
 -
     name: ansible-collection-template
@@ -46,7 +46,7 @@ components:
 commands:
 
 -
-  name: 1. Execute install module
+  name: 1-Execute-install-module
   actions:
     - type: exec
       component: ansible-test
@@ -54,7 +54,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 1. Execute build galaxy
+  name: 1-Execute-build-galaxy
   actions:
     - type: exec
       component: ansible-test
@@ -62,7 +62,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 2. Execute sanity
+  name: 2-Execute-sanity
   actions:
     - type: exec
       component: ansible-test
@@ -70,7 +70,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 3. Execute units
+  name: 3-Execute-units
   actions:
     - type: exec
       component: ansible-test
@@ -78,7 +78,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 4. Execute integration
+  name: 4-Execute-integration
   actions:
     - type: exec
       component: ansible-test
@@ -86,7 +86,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 5. Execute coverage
+  name: 5-Execute-coverage
   actions:
     - type: exec
       component: ansible-test
@@ -103,7 +103,7 @@ commands:
 #       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 6. Execute coverage
+  name: 6-Execute-coverage
   actions:
     - type: exec
       component: ansible-playbook
