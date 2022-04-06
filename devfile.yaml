@@ -46,7 +46,7 @@ components:
 commands:
 
 -
-  name: 1-Execute-install-module
+  name: install-module
   actions:
     - type: exec
       component: ansible-test
@@ -54,7 +54,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 1-Execute-build-galaxy
+  name: build-galaxy
   actions:
     - type: exec
       component: ansible-test
@@ -62,7 +62,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 2-Execute-sanity
+  name: sanity
   actions:
     - type: exec
       component: ansible-test
@@ -70,7 +70,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 3-Execute-units
+  name: units
   actions:
     - type: exec
       component: ansible-test
@@ -78,7 +78,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 4-Execute-integration
+  name: integration
   actions:
     - type: exec
       component: ansible-test
@@ -86,7 +86,7 @@ commands:
       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 5-Execute-coverage
+  name: coverage
   actions:
     - type: exec
       component: ansible-test
@@ -103,7 +103,7 @@ commands:
 #       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
 -
-  name: 6-Execute-coverage
+  name: playbook
   actions:
     - type: exec
       component: ansible-playbook
