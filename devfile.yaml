@@ -21,7 +21,7 @@ components:
 -
   type: dockerimage
   alias: ansible-test
-  image: image-registry.openshift-image-registry.svc:5000/openshift-workspaces/ansible-test-image
+  image: image-registry.openshift-image-registry.svc:5000/openshift-operators/ansible-test-image
   memoryLimit: 2Gi
   mountSources: true
 # -
@@ -39,7 +39,7 @@ components:
 -
   type: dockerimage
   alias: ansible-playbook
-  image: image-registry.openshift-image-registry.svc:5000/openshift-workspaces/ansible-playbook-image
+  image: image-registry.openshift-image-registry.svc:5000/openshift-operators/ansible-playbook-image
   memoryLimit: 2Gi
   mountSources: true
 
