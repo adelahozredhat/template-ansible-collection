@@ -79,14 +79,6 @@ commands:
         kind: run
         isDefault: true
 
-# -
-#   name: 6. Execute coverage
-#   actions:
-#     - type: exec
-#       component: ansible-navigator
-#       command: "ansible-navigator --cdcp collection_doc_cache.db"
-#       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-
 - id: coverage
     exec:
       label: playbook
