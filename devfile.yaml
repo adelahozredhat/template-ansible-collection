@@ -74,7 +74,7 @@ commands:
         kind: run
         isDefault: true
 
-- id: coverage
+- id: playbook
     exec:
       label: playbook
       component: tooling-container
