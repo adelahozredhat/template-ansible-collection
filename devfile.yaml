@@ -1,98 +1,83 @@
 ---
-apiVersion: 1.0.0
+schemaVersion: 2.2.2
 metadata:
-  generateName: ansible-collection-
-projects:
--
-    name: ansible-collection-template
-    source:
-        location: "https://github.com/adelahozredhat/template-ansible-collection"
-        branch: develop
-        type: git
+  name: ansible-demo
 components:
--
-  type: chePlugin
-  id: redhat/vscode-yaml/latest
--
-  type: chePlugin
-  id: ms-python/python/latest
-  preferences:
-    python.globalModuleInstallation: true
--
-  type: dockerimage
-  alias: ansible-test
-  image: image-registry.openshift-image-registry.svc:5000/openshift-operators/ansible-test-image
-  memoryLimit: 2Gi
-  mountSources: true
-# -
-#   type: dockerimage
-#   alias: ansible-navigator
-#   image: image-registry.openshift-image-registry.svc:5000/openshift-workspaces/ansible-navigator-image
-#   memoryLimit: 4Gi
-#   mountSources: true
-# -
-#   type: dockerimage
-#   alias: ansible-runner
-#   image: image-registry.openshift-image-registry.svc:5000/openshift-workspaces/ansible-runner-image
-#   memoryLimit: 2Gi
-#   mountSources: true
--
-  type: dockerimage
-  alias: ansible-playbook
-  image: image-registry.openshift-image-registry.svc:5000/openshift-operators/ansible-playbook-image
-  memoryLimit: 2Gi
-  mountSources: true
+  - name: tooling-container
+    container:
+      image: ghcr.io/ansible/ansible-devspaces@sha256:f833103c12adf6ecb3cc8245dbc2d852ec5025c8c487d601b96995ea8783fb2f
+      memoryRequest: 256M
+      memoryLimit: 6Gi
+      cpuRequest: 250m
+      cpuLimit: 2000m
+      args: ['tail', '-f', '/dev/null']
+      env:
+        - name: 'ANSIBLE_COLLECTIONS_PATH'
+          value: '~/.ansible/collections:/usr/share/ansible/collections:/projects/ansible-devspaces-demo/collections'
+        - name: 'KUBEDOCK_ENABLED'
+          value: "true"
 
 commands:
 
--
-  name: install-module
-  actions:
-    - type: exec
-      component: ansible-test
-      command: "pip install -e ."
-      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+- id: install-module
+    exec:
+      label: install-module
+      component: tooling-container
+      commandLine: "pip install -e ."
+      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+      group:
+        kind: run
+        isDefault: true
 
--
-  name: build-galaxy
-  actions:
-    - type: exec
-      component: ansible-test
-      command: "ansible-galaxy collection build --force"
-      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+- id: build-galaxy
+    exec:
+      label: build-galaxy
+      component: tooling-container
+      commandLine: "ansible-galaxy collection build --force"
+      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+      group:
+        kind: run
+        isDefault: true
 
--
-  name: sanity
-  actions:
-    - type: exec
-      component: ansible-test
-      command: "ansible-test sanity"
-      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-
--
-  name: units
-  actions:
-    - type: exec
-      component: ansible-test
-      command: "ansible-test units"
-      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-
--
-  name: integration
-  actions:
-    - type: exec
-      component: ansible-test
-      command: "ansible-test integration"
-      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-
--
-  name: coverage
-  actions:
-    - type: exec
-      component: ansible-test
-      command: "ansible-test coverage"
-      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-
+- id: sanity
+    exec:
+      label: sanity
+      component: tooling-container
+      commandLine: "ansible-test sanity"
+      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+      group:
+        kind: run
+        isDefault: true
+        
+- id: units
+    exec:
+      label: units
+      component: tooling-container
+      commandLine: "ansible-test units"
+      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+      group:
+        kind: run
+        isDefault: true
+        
+- id: integration
+    exec:
+      label: integration
+      component: tooling-container
+      commandLine: "ansible-test integration"
+      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+      group:
+        kind: run
+        isDefault: true
+        
+- id: coverage
+    exec:
+      label: coverage
+      component: tooling-container
+      commandLine: "ansible-test coverage"
+      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+      group:
+        kind: run
+        isDefault: true
 
 # -
 #   name: 6. Execute coverage
@@ -102,10 +87,12 @@ commands:
 #       command: "ansible-navigator --cdcp collection_doc_cache.db"
 #       workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
 
--
-  name: playbook
-  actions:
-    - type: exec
-      component: ansible-playbook
-      command: "ansible-playbook --cdcp collection_doc_cache.db"
-      workdir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+- id: coverage
+    exec:
+      label: playbook
+      component: tooling-container
+      commandLine: "ansible-playbook --cdcp collection_doc_cache.db"
+      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+      group:
+        kind: run
+        isDefault: true
