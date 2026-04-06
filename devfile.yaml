@@ -20,71 +20,71 @@ components:
 commands:
 
 - id: install-module
-    exec:
-      label: install-module
-      component: tooling-container
-      commandLine: "pip install -e ."
-      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-      group:
-        kind: run
-        isDefault: true
+  exec:
+    label: install-module
+    component: tooling-container
+    commandLine: "pip install -e ."
+    workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+    group:
+      kind: run
+      isDefault: true
 
 - id: build-galaxy
-    exec:
-      label: build-galaxy
-      component: tooling-container
-      commandLine: "ansible-galaxy collection build --force"
-      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-      group:
-        kind: run
-        isDefault: true
+  exec:
+    label: build-galaxy
+    component: tooling-container
+    commandLine: "ansible-galaxy collection build --force"
+    workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+    group:
+      kind: run
+      isDefault: true
 
 - id: sanity
-    exec:
-      label: sanity
-      component: tooling-container
-      commandLine: "ansible-test sanity"
-      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-      group:
-        kind: run
-        isDefault: true
+  exec:
+    label: sanity
+    component: tooling-container
+    commandLine: "ansible-test sanity"
+    workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+    group:
+      kind: run
+      isDefault: true
         
 - id: units
-    exec:
-      label: units
-      component: tooling-container
-      commandLine: "ansible-test units"
-      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-      group:
-        kind: run
-        isDefault: true
+  exec:
+    label: units
+    component: tooling-container
+    commandLine: "ansible-test units"
+    workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+    group:
+      kind: run
+      isDefault: true
         
 - id: integration
-    exec:
-      label: integration
-      component: tooling-container
-      commandLine: "ansible-test integration"
-      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-      group:
-        kind: run
-        isDefault: true
+  exec:
+    label: integration
+    component: tooling-container
+    commandLine: "ansible-test integration"
+    workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+    group:
+      kind: run
+      isDefault: true
         
 - id: coverage
-    exec:
-      label: coverage
-      component: tooling-container
-      commandLine: "ansible-test coverage"
-      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-      group:
-        kind: run
-        isDefault: true
+  exec:
+    label: coverage
+    component: tooling-container
+    commandLine: "ansible-test coverage"
+    workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+    group:
+      kind: run
+      isDefault: true
 
 - id: playbook
-    exec:
-      label: playbook
-      component: tooling-container
-      commandLine: "ansible-playbook --cdcp collection_doc_cache.db"
-      workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
-      group:
-        kind: run
-        isDefault: true
+  exec:
+    label: playbook
+    component: tooling-container
+    commandLine: "ansible-playbook --cdcp collection_doc_cache.db"
+    workingDir: "${CHE_PROJECTS_ROOT}/ansible-collection-template/ansible_collections/namespace_example/collection_example"
+    group:
+      kind: run
+      isDefault: true
